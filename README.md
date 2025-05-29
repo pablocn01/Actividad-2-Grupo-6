@@ -10,16 +10,22 @@ No ha sido posible implementar este ejemplo debido a que no disponíamos de los 
 
 # Ejemplo 2
 
+
 # Ejemplo 3
 
+
 # Ejemplo 4
+[wokwi](https://wokwi.com/projects/431938639801559041)
 
 # Ejemplo 5
+[wokwi](https://wokwi.com/projects/432310955268316161)
 
 # Ejemplo 6
+[wokwi](https://wokwi.com/projects/432136645298838529)
 
-# Sistema final de control y actuación en función del clima.  
-Para nuestro sistema final, vamos a tener algunos de los sensores de la actividad 1. Son los siguientes:
+# Sistema final de control y actuación en función del clima.
+![Esquema sistema final](image.png)
+Para nuestro [sistema final](https://wokwi.com/projects/432309953936838657), vamos a tener algunos de los sensores de la actividad 1. Son los siguientes:
 - DHT22: mide temperatura y humedad.
 - LDR: mide la luminosidad.
 - MQ2 gas sensor: mide la calidad del aire
@@ -59,4 +65,4 @@ A mayores tenemos un potenciómetro que sirve para variar la luminosidad de la p
 Hemos añadido diferentes actuadores en función de las lecturas de los sensores:
 - Servomotor: cuando la temperatura medida es mayor a 30ºC, se pone en funcionamiento. La idea sería que se moviera 180º para abrirse y así dejar pasar agua al interior, de forma que se refrigerase el sistema.
 - Relé: cuando la temperatura medida es menor a 15ºC, se activa dejando pasar corriente. Esta corriente iría hacia una resistencia de forma que aportaría calor al sistema y nos ayudaría a mantener una temperatura estable.
-- LED: es un indicativo de la ubicación de la boya. Se activa cuando detectamos un porcentaje de luminosidad inferior al 
+- LEDs: es un indicativo de la ubicación de la boya. Se activa cuando detectamos un porcentaje de luminosidad inferior al 50%.

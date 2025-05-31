@@ -6,10 +6,11 @@
 
 
 # Ejemplo 1
-No ha sido posible implementar este ejemplo debido a que no disponíamos de los componentes necesarios en wokwi.
+No ha sido posible implementar este ejemplo debido a que no disponíamos de el componente CI L293D, necesario para controlar el motor DC, ni en wokwi ni en el kit físico que recibimos. 
 
-# Ejemplo 2
-
+# Ejemplo 2 - Servomotor
+Como podemos ver en el programa haciendo clic en el siguiente enlace [wokwi](https://wokwi.com/projects/432313638470879233), se ha realizado la implementación de un servofreno conectandolo a tierra, 5V y a un pin PWM.
+El sistema está programado para que realice giros en el aspa instalado de 0 a 180 grados para pasado un tiempo determinado hacer el gito inverso, es decir de 180 a 0 grados.
 
 # Ejemplo 3
 

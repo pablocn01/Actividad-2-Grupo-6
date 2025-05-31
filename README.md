@@ -39,14 +39,14 @@ Para nuestro [sistema final](https://wokwi.com/projects/432309953936838657), vam
 - MQ2 gas sensor: mide la calidad del aire
 
 A mayores tenemos un potenciómetro que sirve para variar la luminosidad de la pantalla LCD y hemos definido en código que se actualicen los resultados cada dos minutos realizando un promedio.
+Para la realizacion de este promedio, se ha tomado una lectura de los sensores (DHT22, Gas sensor y servo) cada 15 segundos para así pasados 2 minutos calcular el promedio.
 ```
-// Calcular promedio cada 8 lecturas
-  static unsigned long lastAverageTime = 0;
+static unsigned long lastAverageTime = 0;
   // en loop()
   if (millis() - lastDHTRead >= DHT_INTERVAL) {
     lastDHTRead = millis();
 
-    tempDHT = dht.readTemperature();
+    float tempDHT = dht.readTemperature();
 
     if (!isnan(tempDHT)) {
       dhtTemps[dhtIndex] = tempDHT;
@@ -64,13 +64,69 @@ A mayores tenemos un potenciómetro que sirve para variar la luminosidad de la p
         }
         float promedio = sum / 8;
 
-        //... muestra por pantalla
+        // Mostrar promedio en el LCD durante 5 segundos
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("Prom: ");
+        lcd.print(promedio, 1);
+        lcd.print(" C");
+
+        lcd.setCursor(1, 1);
+        lcd.print("Aire:");
+        lcd.print(calidadAireTexto(airQualityRaw));
+
+        delay(5000); // Mostrar durante 5 segundos
+
+        dhtCount = 0; // Resetear el contador para próximas 8 lecturas
+      }
+      // casos del servo
+      if (tempDHT <= 30 && pos == 0) {
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("Temp OK ");
+        lcd.print(tempDHT, 1);
+        lcd.print(" C");
+        delay(1000);
+        pos = 0;
+        myservo.write(0);
+      } else if(tempDHT <= 30 && pos != 0) {
+        for (pos = 180; pos >= 0; pos -= 1) { // va de 180 a 0 grados
+          myservo.write(pos);
+          delay(15);
+        }
+        pos = 0;
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("cerrando ");
+        lcd.setCursor(0, 1);
+        lcd.print("compuertas ");
+        delay(1000);
+      } else if(tempDHT > 30 && pos == 0 ) {
+        for (pos = 0; pos <= 180; pos += 1) { // va de 0 a 180 grados
+          myservo.write(pos);  // indica al servo que vaya a la posición 'pos'
+          delay(15);           // espera 15 ms para que el servo alcance la posición
+        }
+        pos = 180;
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("abriendo ");
+        lcd.setCursor(0, 1);
+        lcd.print("compuertas ");
+        delay(1000);
+      } else if(tempDHT > 30 && pos != 0 ) {
+        pos = 180;
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("compuertas ya");
+        lcd.setCursor(0, 1);
+        lcd.print("abiertas ");
+        delay(1000);
       }
     }
-  } 
+  }
 ```
 
 Hemos añadido diferentes actuadores en función de las lecturas de los sensores:
-- Servomotor: cuando la temperatura medida es mayor a 30ºC, se pone en funcionamiento. La idea sería que se moviera 180º para abrirse y así dejar pasar agua al interior, de forma que se refrigerase el sistema.
+- Servomotor: cuando la temperatura medida es mayor a 30ºC, se pone en funcionamiento. La idea sería que se moviera 180º para abrirse y así dejar pasar agua al interior, de forma que se refrigerase el sistema. En caso de bajar de 30ºC se cerrarían las compuertas al no ser necesaria la refrigeración
 - Relé: cuando la temperatura medida es menor a 15ºC, se activa dejando pasar corriente. Esta corriente iría hacia una resistencia de forma que aportaría calor al sistema y nos ayudaría a mantener una temperatura estable.
-- LEDs: es un indicativo de la ubicación de la boya. Se activa cuando detectamos un porcentaje de luminosidad inferior al 50%.
+- LEDs: es un indicativo de la ubicación de la boya. Se activa cuando detectamos un porcentaje de luminosidad inferior al 50% variando el sensor LDR.

@@ -1,3 +1,4 @@
+
 # Actividad 2. Sistema de control y actuación en función del clima.
 ## Autores: Adrián Antolín Pellicer, Pablo Nicolás Cristóbal Navas, Ahinoa Santamaría Puras
 ### Equipos e Instrumentación Electrónica, UNIR. Grupo 6
@@ -13,22 +14,25 @@ El desarrollo de este proyecto ha brindado la oportunidad de aplicar de forma pr
 No ha sido posible implementar este ejemplo debido a que no disponíamos de el componente CI L293D, necesario para controlar el motor DC, ni en wokwi ni en el kit físico que recibimos. 
 
 # Ejemplo 2 - Servomotor
-Como podemos ver en el programa haciendo clic en el siguiente enlace [wokwi](https://wokwi.com/projects/432313638470879233), se ha realizado la implementación de un servofreno conectandolo a tierra, 5V y a un pin PWM.
-El sistema está programado para que realice giros en el aspa instalado de 0 a 180 grados para pasado un tiempo determinado hacer el gito inverso, es decir de 180 a 0 grados.
-![Esquema ejemplo2](ejemplo2.png)
+Como podemos ver en el programa haciendo clic en el siguiente enlace [wokwi](https://wokwi.com/projects/432313638470879233), se ha realizado la implementación de un servofreno conectandolo a tierra, 5V y a un pin PWM.  
+El sistema está programado para que realice giros en el aspa instalado de 0 a 180 grados para pasado un tiempo determinado hacer el gito inverso, es decir de 180 a 0 grados.  
+![Esquema ejemplo 2](ejemplo2.png)
 # Ejemplo 3 - Motor paso a paso
-Como podemos ver en la implementacion realizada en [wokwi](https://wokwi.com/projects/432314677733555201), se ha realizado la implementación de un motor de paso a paso conectadno las entradas a los pines 8,9,10 y 11.
-Para la lógica empleada en el programa, se ha definido el número de pasos que debe realizar el motor en este caso 200, que lo realiza en una dirección durante un tiempo determinado y en la dirección opuesta durante ese mismo periodo.
-![Esquema ejemplo3](ejemplo3.png)
+Como podemos ver en la implementacion realizada en [wokwi](https://wokwi.com/projects/432314677733555201), se ha realizado la implementación de un motor de paso a paso conectadno las entradas a los pines 8,9,10 y 11.  
+Para la lógica empleada en el programa, se ha definido el número de pasos que debe realizar el motor en este caso 200, que lo realiza en una dirección durante un tiempo determinado y en la dirección opuesta durante ese mismo periodo.  
+![Esquema ejemplo 3](ejemplo3.png)
 
-# Ejemplo 4
-[wokwi](https://wokwi.com/projects/431938639801559041)
+# Ejemplo 4 - Aplicación de control de 8 leds
+En este [ejemplo](https://wokwi.com/projects/432480795540709377), se ha implementado un sistema que controla la activación de 8 leds dependiendo de la luminosidad ambiental, medida con un sensor LDR. Para controlarlos se ha usado el chip 74HC595, que convierte los datos serie a paralelo y permite usar únicamente 3 pines del Arduino para controlar 8 LEDs. Gracias al uso del chip, se ha conseguido que a mayor nivel de luminosidad capturado por el LDR, menor número de LEDs habrá encendidos.  
+![Esquema ejemplo 4](ejemplo4.png)
 
-# Ejemplo 5
-[wokwi](https://wokwi.com/projects/432310955268316161)
+# Ejemplo 5 - Control de iluminación
+Este [ejemplo](https://wokwi.com/projects/432310955268316161) es más sencillo que el anterior porque solo tenemos un LED que brillará en más cuanta menos luz ambiental detecte nuestro sensor. Al solo tener uno no nos hace falta el chip 74HC595, lo que simplifica mucho el montaje y el código.  
+![Esquema ejemplo 5](ejemplo5.png)
 
 # Ejemplo 6
-[wokwi](https://wokwi.com/projects/432136645298838529)
+Para el último [ejemplo](https://wokwi.com/projects/432136645298838529), hemos creado un diseño similar al del ejemplo 4, pero en esta ocasión hemos usado 5 LEDs y no hemos empleado el chip 74HC595. El funcionamiento es el mismo que el 4, cuanta menos luz se detecta, más LEDs se encienden, pero en este caso con un código más 'sucio' porque tenemos que definir cada led manualmente.  
+![Esquema ejemplo 6](ejemplo6.png)
 
 # Sistema final de control y actuación en función del clima.
 ![Esquema sistema final](Proyecto_final.png)

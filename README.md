@@ -1,9 +1,13 @@
 # Actividad 2. Sistema de control y actuación en función del clima.
-## Adrián Antolín Pellicer, Pablo Nicolás Cristóbal Navas, Ahinoa Santamaría Puras
+## Autores: Adrián Antolín Pellicer, Pablo Nicolás Cristóbal Navas, Ahinoa Santamaría Puras
 ### Equipos e Instrumentación Electrónica, UNIR. Grupo 6
 
 # Introducción
+Este proyecto se centra en la mejora y optimización de una estación meteorológica previamente desarrollada, adaptándola para su uso en una boya destinada a la monitorización del entorno climático. Partiendo del diseño realizado en la práctica 1, se han añadido nuevas funcionalidades con el objetivo de ampliar su operatividad y mejorar su desempeño. Para ello, se seleccionaron e integraron las mejores ideas propuestas individualmente por los miembros del grupo en la actividad anterior, combinándolas con otras mejoras sugeridas en esta nueva fase del trabajo.
 
+Entre las novedades incorporadas se encuentran un servomotor que permite regular la temperatura del sistema ante condiciones de calor extremo y un relé encargado de activar un sistema calefactor cuando la temperatura ambiente desciende. También se añadieron dos luces LED que se encienden automáticamente en función de la iluminación, facilitando la visibilidad de la boya en entornos con poca luz. Toda la información recogida por los sensores es gestionada por un microcontrolador, que se encarga de procesar los datos y mostrarlos en una pantalla LCD, permitiendo así una visualización clara y en tiempo real del estado del entorno.
+
+El desarrollo de este proyecto ha brindado la oportunidad de aplicar de forma práctica los conocimientos adquiridos durante el curso, en especial los relacionados con microcontroladores, sensores y montaje de sistemas electrónicos. Asimismo, ha contribuido al fortalecimiento de competencias clave en el diseño e implementación de soluciones tecnológicas orientadas al análisis ambiental, con aplicaciones futuras en el ámbito de las telecomunicaciones y la ingeniería aplicada.
 
 # Ejemplo 1
 No ha sido posible implementar este ejemplo debido a que no disponíamos de el componente CI L293D, necesario para controlar el motor DC, ni en wokwi ni en el kit físico que recibimos. 
@@ -12,7 +16,9 @@ No ha sido posible implementar este ejemplo debido a que no disponíamos de el c
 Como podemos ver en el programa haciendo clic en el siguiente enlace [wokwi](https://wokwi.com/projects/432313638470879233), se ha realizado la implementación de un servofreno conectandolo a tierra, 5V y a un pin PWM.
 El sistema está programado para que realice giros en el aspa instalado de 0 a 180 grados para pasado un tiempo determinado hacer el gito inverso, es decir de 180 a 0 grados.
 
-# Ejemplo 3
+# Ejemplo 3 - Motor paso a paso
+Como podemos ver en la implementacion realizada en [wokwi](https://wokwi.com/projects/432314677733555201), se ha realizado la implementación de un motor de paso a paso conectadno las entradas a los pines 8,9,10 y 11.
+Para la lógica empleada en el programa, se ha definido el número de pasos que debe realizar el motor en este caso 200, que lo realiza en una dirección durante un tiempo determinado y en la dirección opuesta durante ese mismo periodo.
 
 
 # Ejemplo 4
@@ -26,6 +32,7 @@ El sistema está programado para que realice giros en el aspa instalado de 0 a 1
 
 # Sistema final de control y actuación en función del clima.
 ![Esquema sistema final](image.png)
+
 Para nuestro [sistema final](https://wokwi.com/projects/432309953936838657), vamos a tener algunos de los sensores de la actividad 1. Son los siguientes:
 - DHT22: mide temperatura y humedad.
 - LDR: mide la luminosidad.

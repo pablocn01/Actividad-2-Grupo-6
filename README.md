@@ -130,3 +130,57 @@ Hemos añadido diferentes actuadores en función de las lecturas de los sensores
 - Servomotor: cuando la temperatura medida es mayor a 30ºC, se pone en funcionamiento. La idea sería que se moviera 180º para abrirse y así dejar pasar agua al interior, de forma que se refrigerase el sistema. En caso de bajar de 30ºC se cerrarían las compuertas al no ser necesaria la refrigeración
 - Relé: cuando la temperatura medida es menor a 15ºC, se activa dejando pasar corriente. Esta corriente iría hacia una resistencia de forma que aportaría calor al sistema y nos ayudaría a mantener una temperatura estable.
 - LEDs: es un indicativo de la ubicación de la boya. Se activa cuando detectamos un porcentaje de luminosidad inferior al 50% variando el sensor LDR.
+- Giroscopio: se emplea para calcular la orientación que tiene la boya, de forma que con estos datos se puede ver si hay mucho oleaje o poco.
+En cuanto a la representación en el display de los datos, se ha optado por hacer que cada cierto tiempo cambien los datos que se muestran para asi tener una mejor claridad y más espacio para los valores, haciendo uso de un switch.
+```
+ // Limpiar la pantalla
+  lcd.clear();
+
+ // Mostrar datos en la LCD
+  switch (displayMode ) {
+    case 0: {
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("H:");
+        lcd.print(humidity);
+        lcd.print("% T:");
+        lcd.print(temperatureC);
+        lcd.print("C");
+        break;
+    }
+    case 1: {
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("H:");
+        lcd.print(humidity);
+        lcd.print("% T:");
+        lcd.print(temperatureC);
+        lcd.print("C");
+        break;
+    }
+    case 2: {
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("Luz:");
+        lcd.print(lightLevel);
+        break;
+    }
+    case 3: {
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("Gyro X:");
+        lcd.print(gx);
+        lcd.setCursor(0, 1);
+        lcd.print("Y:");
+        lcd.print(gy);
+        lcd.print(" Z:");
+        lcd.print(gz);
+        break;
+    }
+  }
+  
+    displayMode = (displayMode + 1) % 5;
+
+
+
+```

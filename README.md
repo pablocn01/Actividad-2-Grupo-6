@@ -31,7 +31,7 @@ Para la lógica empleada en el programa, se ha definido el número de pasos que 
 [wokwi](https://wokwi.com/projects/432136645298838529)
 
 # Sistema final de control y actuación en función del clima.
-![Esquema sistema final](image.png)
+![Esquema sistema final](Proyecto_final.png)
 
 Para nuestro [sistema final](https://wokwi.com/projects/432309953936838657), vamos a tener algunos de los sensores de la actividad 1. Son los siguientes:
 - DHT22: mide temperatura y humedad.

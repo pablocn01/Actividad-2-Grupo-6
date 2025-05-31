@@ -15,11 +15,11 @@ No ha sido posible implementar este ejemplo debido a que no disponíamos de el c
 # Ejemplo 2 - Servomotor
 Como podemos ver en el programa haciendo clic en el siguiente enlace [wokwi](https://wokwi.com/projects/432313638470879233), se ha realizado la implementación de un servofreno conectandolo a tierra, 5V y a un pin PWM.
 El sistema está programado para que realice giros en el aspa instalado de 0 a 180 grados para pasado un tiempo determinado hacer el gito inverso, es decir de 180 a 0 grados.
-
+![Esquema ejemplo2](ejemplo2.png)
 # Ejemplo 3 - Motor paso a paso
 Como podemos ver en la implementacion realizada en [wokwi](https://wokwi.com/projects/432314677733555201), se ha realizado la implementación de un motor de paso a paso conectadno las entradas a los pines 8,9,10 y 11.
 Para la lógica empleada en el programa, se ha definido el número de pasos que debe realizar el motor en este caso 200, que lo realiza en una dirección durante un tiempo determinado y en la dirección opuesta durante ese mismo periodo.
-
+![Esquema ejemplo3](ejemplo3.png)
 
 # Ejemplo 4
 [wokwi](https://wokwi.com/projects/431938639801559041)
